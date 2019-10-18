@@ -39,13 +39,13 @@ loop									; Бесконечный цикл
 	CMP		R9,#0
 	IT		EQ
 	BEQ		rising
-	B		falling
 	
 falling	PROC						
 	
 	SUBS 	R7,#1
-	IT		EQ
+	ITT		EQ
 	MOVEQ	R9,#0
+	MOVEQ	R7,#1
 	SUB 	R8,R6,R7
 	B 	continue
 	ENDP
