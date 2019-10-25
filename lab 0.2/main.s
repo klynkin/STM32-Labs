@@ -60,9 +60,10 @@ loop									; Бесконечный цикл
 	MOV32	R0, GPIOC_IDR				; адрес порта
 	LDR		R2, [R0]					; считать порт
 	MOV		R9, #0x0000A000				; 4-битная маска настроек для Output mode 50mHz, Push-Pull ("0011")
-	LSL		R2,	#17
-	LSR		R2,	#31
-	CMP		R2,0
+	;LSL		R2,	#17
+	;LSR		R2,	#31
+	;CMP		R2,0
+	TST     R2, #0x4000
 	IT		EQ
 	BEQ		rising
 	B		continue

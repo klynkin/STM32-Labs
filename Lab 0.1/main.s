@@ -1,6 +1,5 @@
 	PRESERVE8							; 8-битное выравнивание стека
 	THUMB								; Режим Thumb (AUL) инструкций
-
 	GET	config.s						; include-файлы
 	GET	stm32f10x.s	
 
@@ -18,9 +17,9 @@ Reset_Handler	PROC					; Вектор сброса
 main									; Основная подпрограмма
 	MOV32	R0, PERIPH_BB_BASE + \
 			RCC_APB2ENR * 32 + \
-			4 * 4						; вычисляем адрес для BitBanding 5-го бита регистра RCC_APB2ENR
+			4 * 4						; вычисляем адрес для BitBanding 4-го бита регистра RCC_APB2ENR
 										; BitAddress = BitBandBase + (RegAddr * 32) + BitNumber * 4
-	MOV		R1, #1						; включаем тактирование порта D (в 5-й бит RCC_APB2ENR пишем '1`)
+	MOV		R1, #1						; включаем тактирование порта C (в 4-й бит RCC_APB2ENR пишем '1`)
 	STR 	R1, [R0]					; загружаем это значение
 	
 	MOV32	R0, GPIOC_CRH				; адрес порта
